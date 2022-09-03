@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import imd.tst.exercicio.models.Pauta;
 import imd.tst.exercicio.services.PautaService;
 import imd.tst.exercicio.services.ProcessoService;
+import imd.tst.exercicio.models.Pauta;
 
 public class PautaController {
 

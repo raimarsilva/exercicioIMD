@@ -14,8 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import imd.tst.exercicio.models.Processo;
 import imd.tst.exercicio.services.ProcessoService;
+import imd.tst.exercicio.models.Processo;
 
 @RestController
 @RequestMapping(value="/api")

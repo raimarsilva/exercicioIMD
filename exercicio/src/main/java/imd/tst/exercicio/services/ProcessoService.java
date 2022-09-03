@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import imd.tst.exercicio.models.Processo;
 import imd.tst.exercicio.repository.ProcessoRepository;
+import imd.tst.exercicio.models.Processo;
 
 @Service
 public class ProcessoService {
@@ -14,7 +14,7 @@ public class ProcessoService {
     @Autowired
     ProcessoRepository processoRepository;
     
-    public Processo salvar(Processo processo){
+    public Processo salvar(imd.tst.exercicio.models.Processo processo){
     	return processoRepository.save(processo);
     }
 

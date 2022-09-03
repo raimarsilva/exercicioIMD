@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import imd.tst.exercicio.models.Pauta;
 import imd.tst.exercicio.repository.PautaRepository;
+import imd.tst.exercicio.models.Pauta;
 
 @Service
 public class PautaService {
