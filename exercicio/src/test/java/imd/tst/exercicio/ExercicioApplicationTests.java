@@ -1,10 +1,10 @@
-package tst.trabalho.Pratica;
+package imd.tst.exercicio;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PraticaApplicationTests {
+class ExercicioApplicationTests {
 
 	@Test
 	void contextLoads() {
