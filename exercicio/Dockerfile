@@ -1,4 +1,4 @@
-FROM openjdk:8-alpine
+FROM openjdk:18-alpine
 
 COPY . .
 
@@ -6,10 +6,10 @@ COPY . .
 # por causa do banco de dados
 # RUN ./gradlew clean build -x test
 
-RUN chmod +x /build/libs/Exercicio-0.0.1-SNAPSHOT.jar
+RUN chmod +x /build/libs/exercicio-0.0.1-SNAPSHOT.jar
 
 WORKDIR /build/libs
 
 #RUN javac Main.java
 
-CMD ["java", "-Dspring.profiles.active=dev", "-jar", "Exercicio-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-Dspring.profiles.active=dev", "-jar", "exercicio-0.0.1-SNAPSHOT.jar"]
