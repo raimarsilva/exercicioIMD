@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +38,7 @@ public class Pauta implements Serializable {
     @Column(nullable = false) @DateTimeFormat(style = "SS")
     private Date data;
     
-    @OneToMany(targetEntity = Pauta.class)
+    @OneToMany(targetEntity = Processo.class)
     private java.util.Set<Processo> processos;
 
 }

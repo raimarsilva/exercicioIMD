@@ -14,7 +14,7 @@ public class ProcessoService {
     @Autowired
     ProcessoRepository processoRepository;
     
-    public Processo salvar(imd.tst.exercicio.models.Processo processo){
+    public Processo salvar(Processo processo){
     	return processoRepository.save(processo);
     }
 
