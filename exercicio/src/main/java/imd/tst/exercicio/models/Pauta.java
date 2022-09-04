@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.mapping.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
@@ -30,12 +31,13 @@ public class Pauta implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_pauta"/* , insertable = false, updatable = false */)
     private Long id;
     
     @Column(nullable = false) @DateTimeFormat(style = "SS")
     private Date data;
     
     @OneToMany(targetEntity = Pauta.class)
-    private ArrayList<Processo> processos;
+    private java.util.Set<Processo> processos;
 
 }
