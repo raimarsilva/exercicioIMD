@@ -1,32 +1,26 @@
+import React, { useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import HelloWorld from './components/HelloWorld';
-import Nomes from './components/Nomes';
 import Processo from './components/Processo';
+import api from './services/api';
 
 function App() {
-  // declarando uma variavel de bloco para ser usada como valor no JSX.
-  let nome='Raimar'
+  var [processo, listarProcessoUnico] = useState();
 
+  useEffect(() => {
+      api
+        .get("/processo/3")
+        .then((response) => listarProcessoUnico(response.data))
+        .catch((err) => {
+          console.error("Impossivel listar: " + err);
+        });
+    }, []);
+  
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Aprenda React, {nome.toUpperCase()}
-        </a>
-        <p><HelloWorld/></p>
-        <Nomes nome="Izelma"></Nomes>
-        <Nomes nome={nome}/>
-        <Processo numeroProcesso='P1234' relator="Emanoel" autor="Raimar" reu="Izelma"/>
+        <Processo numero={processo?.numero} orgaoJudic={processo?.orgaoJudic} relator={processo?.relator}/>
       </header>
     </div>
   );

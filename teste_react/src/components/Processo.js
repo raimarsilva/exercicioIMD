@@ -1,13 +1,13 @@
 // Definição de um componente no React.
-function Processo({idprocesso, numeroProcesso, relator, autor, reu}){
+function Processo({numero, orgaoJudic, relator}){
+    
+
     return (
         <div>
-            <h2>Número do Processo: {numeroProcesso}</h2>
-            <h3>Relator: {relator}</h3>
-            <h3>Autor: {autor}</h3>
-            <h3>Réu: {reu}</h3>
+            <p>Número do Processo: {numero}</p>
+            <p>Órgão judicante: {orgaoJudic}</p>
+            <p>Relator: {relator}</p>
         </div>
-    )
+    );
 }
-
-export default Processo
+export default Processo;
