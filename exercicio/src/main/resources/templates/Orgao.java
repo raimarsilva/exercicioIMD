@@ -3,7 +3,7 @@ package templates;
 
 public enum Orgao {
 	TRIBUNAL_PLENO("Tribunal Pleno"),
-	ORGAO_ESPECIAL("òrgão Especial"),
+	ORGAO_ESPECIAL("Órgão Especial"),
 	SEDC("Seção Especializada em Dissídios Coletivos"),
 	SIEDI ("Subeção I Especializada em Dissídios Individuais"),
 	SIIEDI("Subeção II Especializada em Dissídios Individuais"),

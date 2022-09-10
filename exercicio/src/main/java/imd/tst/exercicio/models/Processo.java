@@ -35,11 +35,16 @@ public class Processo implements Serializable {
 	@Column(nullable = false)
     private String numero;
 	
-    private String orgaoJudic;
+	//Confirmar se essa propriedade é necessária no processo ou se pode ser recuperada da pauta.
+    //private String orgaoJudic;
+	
     private String relator;
     
     @ManyToOne(targetEntity = Pauta.class)
     @JoinColumn(name="id")
     private Pauta pauta;
+    
+    @Column
+    private String resumo;
 
 }

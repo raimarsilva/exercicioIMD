@@ -18,6 +18,7 @@ import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import lombok.Builder;
 import lombok.Data;
+import templates.Orgao;
 
 @Builder @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 // Anotações lombok
@@ -37,5 +38,8 @@ public class Pauta implements Serializable {
     
     @OneToOne(targetEntity = Processo.class)
     private java.util.Set<Processo> processos;
+    
+    @Column(name="orgao_judicante", nullable = false)
+    private Orgao orgaoJudicante;
 
 }
