@@ -16,12 +16,16 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import templates.Orgao;
 
 @Builder @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
 // Anotações lombok
+@AllArgsConstructor
+@NoArgsConstructor
 @Data
 // Anotações JPA
 @Entity @Table(name = "TB_PAUTA")
@@ -39,7 +43,7 @@ public class Pauta implements Serializable {
     @OneToOne(targetEntity = Processo.class)
     private java.util.Set<Processo> processos;
     
-    @Column(name="orgao_judicante", nullable = false)
+    @Column(name="orgao_judicante")
     private Orgao orgaoJudicante;
 
 }
