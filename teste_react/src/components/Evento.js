@@ -11,8 +11,6 @@ function Evento () {
             <form onSubmit={carregar}>
             <button onClick={alertar}>Clicar</button>
             </form>
-            
-            
         </div>
     )
 }
