@@ -4,6 +4,6 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface AdvogadoRepository extends PessoaRepository{
+public interface AdvogadoRepository extends UsuarioRepository{
 
 }
