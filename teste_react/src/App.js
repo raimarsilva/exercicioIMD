@@ -1,10 +1,9 @@
 
-import logo from './logo.svg';
+//import logo from './logo.svg';
 import './App.css';
 import Processo from './components/Processo';
 import Pauta from './components/Pauta';
 import CadastrarUsuario from './components/CadastrarUsuario';
-import Evento from './components/Evento';
 
 function App() {
   
@@ -12,9 +11,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-      <h1>Cadastrar processo</h1>
-        <img src={logo} className="App-logo" alt="logo" />
-        <Evento></Evento>
+      <h1>Cadastrar usuário:</h1>
+        {/*<img src={logo} className="App-logo" alt="logo" />*/}
         <CadastrarUsuario></CadastrarUsuario>
         <Processo />
         <Pauta/>

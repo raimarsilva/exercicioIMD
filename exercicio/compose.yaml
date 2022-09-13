@@ -4,9 +4,9 @@ services:
     image: 'app_exercicio_1'
     build: .
     ports:
-      - 8080:8080
+      - 8081:8081
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/bd_exercicio_1
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/bd_exercicio
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
       - SPRING_JPA_HIBERNATE_DDL_AUTO=update

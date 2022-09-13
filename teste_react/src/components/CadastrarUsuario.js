@@ -1,19 +1,13 @@
-import React, { useState } from 'react';
 import api from "../services/api";
 
 // Definição de um componente no React.
 const CadastrarUsuario = () => {
 
-    var [usuario, cadastrarUsuario] = useState();
-
-    function postar () {
-        const nome = document.getElementById('nome').value;
+    function postar (e) {
+        e.preventDefault()
+        let nome = document.getElementById('nome').value;
         console.log(nome);
-        const formData = new FormData();
-        formData.append(nome,usuario);
-        api.post("/usuario?nome=", usuario).then((response) => cadastrarUsuario(response)).catch((err) => {
-          console.error("Impossivel cadastrar usuario: " + err);
-        })
+        api.post("/usuario", {nome:nome})
     };
     
     return (

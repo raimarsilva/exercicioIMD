@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -40,7 +41,7 @@ public class Pauta implements Serializable {
     @Column(nullable = false) @DateTimeFormat(style = "SS")
     private Date data;
     
-    @OneToOne(targetEntity = Processo.class)
+    @OneToMany(targetEntity = Processo.class)
     private java.util.Set<Processo> processos;
     
     @Column(name="orgao_judicante")
