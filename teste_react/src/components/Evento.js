@@ -1,4 +1,4 @@
-function Evento () {
+export default function Evento () {
 
     function alertar(e){
         e.preventDefault()
@@ -14,5 +14,3 @@ function Evento () {
         </div>
     )
 }
-
-export default Evento
