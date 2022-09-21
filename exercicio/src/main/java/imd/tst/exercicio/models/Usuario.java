@@ -42,7 +42,7 @@ public class Usuario implements Serializable, UserDetails {
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
-		return this.roles;
+		return this.roles ;
 	}
 
 	@Override
