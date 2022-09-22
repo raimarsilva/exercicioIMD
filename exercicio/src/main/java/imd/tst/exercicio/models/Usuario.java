@@ -1,7 +1,6 @@
 package imd.tst.exercicio.models;
 
-import java.io.Serializable;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,19 +19,20 @@ import lombok.NoArgsConstructor;
 @Builder
 @Entity
 @Table(name = "tb_usuario")
-public class Usuario implements Serializable{
-	
-    private static final long serialVersionUID = 1L;
+public class Usuario{
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     
+    @Column(nullable = false, unique=true)
     @NotEmpty(message = "O Campo Login é obrigatório.")
     private String login;
     
+    @Column(nullable = false)
     @NotEmpty(message = "O Campo Senha é obrigatório.")
     private String senha;
 
+    @Column(nullable = false)
     private boolean admin;
 }
