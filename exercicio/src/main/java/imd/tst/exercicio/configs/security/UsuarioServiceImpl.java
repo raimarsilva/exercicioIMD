@@ -3,7 +3,6 @@ package imd.tst.exercicio.configs.security;
 
 import javax.transaction.Transactional;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -23,8 +22,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
 
     private final PasswordEncoder passwordEncoder;
 
-    @Autowired
-    private UsuarioRepository usuarioRepository;
+    private final UsuarioRepository usuarioRepository;
 
     @Transactional
     public Usuario salvar(Usuario usuario) {
