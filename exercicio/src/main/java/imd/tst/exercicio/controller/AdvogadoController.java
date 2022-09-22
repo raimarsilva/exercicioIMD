@@ -43,6 +43,19 @@ public class AdvogadoController {
     public ResponseEntity<Advogado> buscarPeloId(@PathVariable Long id){
         Advogado advogado = advogadoService.buscarPeloId(id);
         if(advogado != null){
+            System.out.println(advogado.toString());
+            return ResponseEntity.status(HttpStatus.OK).body(advogado);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(advogado);
+        }
+    }
+    
+    // Rota para buscar pelo nome do advogado.
+    @GetMapping(path = "/advogado/nome/{nome}")
+    public ResponseEntity<Advogado> buscarPeloNome(@PathVariable String nome){
+        Advogado advogado = advogadoService.buscarPeloNome(nome);
+        if(advogado != null){
+        	System.out.println(advogado.toString());
             return ResponseEntity.status(HttpStatus.OK).body(advogado);
         }else{
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(advogado);

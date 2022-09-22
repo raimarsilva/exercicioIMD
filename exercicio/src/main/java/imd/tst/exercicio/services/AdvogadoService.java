@@ -31,6 +31,10 @@ public class AdvogadoService {
         }
 
     }
+    
+    public Advogado buscarPeloNome(String nome) {
+		return advogadoRepository.findByNome(nome).get();
+	}
 
     public Advogado atualizar(Long id, Advogado advogado){    	
     	return (advogadoRepository.findById(id).isPresent()) 
@@ -45,5 +49,7 @@ public class AdvogadoService {
             return false;
         }
     }
+
+	
 
 }
