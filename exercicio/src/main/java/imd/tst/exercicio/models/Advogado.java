@@ -1,6 +1,8 @@
 package imd.tst.exercicio.models;
 
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +16,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper=false)
 @Entity
 @Table(name = "tb_advogado")
-public class Advogado extends Usuario {
+public class Advogado implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
