@@ -23,7 +23,7 @@ public class UsuarioController {
 	private final PasswordEncoder passwordEncoder;
 	
 	//caminho para cadastrar um novo usuário:
-	@PostMapping
+	@PostMapping("/criar")
     @ResponseStatus(HttpStatus.CREATED)
     public Usuario salvar( @RequestBody @Valid Usuario usuario ){
         String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
