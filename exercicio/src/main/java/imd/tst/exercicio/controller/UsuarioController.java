@@ -1,29 +1,34 @@
 package imd.tst.exercicio.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.validation.Valid;
+
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import imd.tst.exercicio.configs.security.UsuarioServiceImpl;
 import imd.tst.exercicio.models.Usuario;
-import imd.tst.exercicio.services.UsuarioService;
+import lombok.RequiredArgsConstructor;
 
 @RestController
-@CrossOrigin(origins="*")
-@RequestMapping(value="/api")
+@RequestMapping("/api/usuarios")
+@RequiredArgsConstructor
 public class UsuarioController {
 	
-	@Autowired
-	UsuarioService usuarioService;
+	private final UsuarioServiceImpl usuarioService;
+	private final PasswordEncoder passwordEncoder;
 	
 	//caminho para cadastrar um novo usuário:
-	@PostMapping(path = "/usuario")
-	public ResponseEntity<Usuario> salvar(@RequestBody Usuario usuario){
-		return ResponseEntity.status(HttpStatus.CREATED).body(usuarioService.salvar(usuario));
-	}
+	@PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Usuario salvar( @RequestBody @Valid Usuario usuario ){
+        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+        usuario.setSenha(senhaCriptografada);
+        return usuarioService.salvar(usuario);
+    }
 
 }
