@@ -24,11 +24,11 @@ public class UsuarioServiceImpl implements UserDetailsService {
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private UsuarioRepository repository;
+    private UsuarioRepository usuarioRepository;
 
     @Transactional
     public Usuario salvar(Usuario usuario) {
-        return repository.save(usuario);
+        return usuarioRepository.save(usuario);
     }
 
     public UserDetails autenticar( Usuario usuario ){
@@ -45,7 +45,7 @@ public class UsuarioServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        Usuario usuario = repository.findByLogin(username)
+        Usuario usuario = usuarioRepository.findByLogin(username)
                 .orElseThrow(() -> new UsernameNotFoundException("Usuário não encontrado na base de dados."));
 
         String[] roles = usuario.isAdmin() ? new String[] { "ADMIN", "USER" } : new String[] { "USER" };
