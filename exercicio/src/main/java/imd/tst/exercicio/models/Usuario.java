@@ -1,6 +1,5 @@
 package imd.tst.exercicio.models;
 
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,7 +21,7 @@ import lombok.Data;
 @Entity
 @Data
 @Table(name = "tb_usuario")
-public class Usuario implements Serializable, UserDetails {
+public class Usuario implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
 	

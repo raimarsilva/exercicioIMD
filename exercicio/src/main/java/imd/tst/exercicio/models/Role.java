@@ -1,7 +1,5 @@
 package imd.tst.exercicio.models;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -15,12 +13,11 @@ import org.springframework.security.core.GrantedAuthority;
 
 import imd.tst.exercicio.enums.RoleName;
 import lombok.Data;
-import net.bytebuddy.asm.Advice.This;
 
 @Entity
 @Table(name="tb_role")
 @Data
-public class Role implements GrantedAuthority, Serializable{
+public class Role implements GrantedAuthority{
 	
 	private static final long serialVersionUID = 1L;
 	
