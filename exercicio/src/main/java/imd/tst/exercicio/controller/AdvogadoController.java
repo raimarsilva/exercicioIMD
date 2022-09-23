@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import imd.tst.exercicio.services.AdvogadoService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import imd.tst.exercicio.models.Advogado;
 
 @RestController
@@ -28,18 +30,21 @@ public class AdvogadoController {
 
     // Rota para salvar
     @PostMapping(path = "/advogado")
+    @Operation(summary = "Salvar advogado", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Advogado> salvar(@RequestBody Advogado advogado){
         return ResponseEntity.status(HttpStatus.CREATED).body(advogadoService.salvar(advogado));
     }
 
     // Rota para listar todos
     @GetMapping(path = "/advogados")
+    @Operation(summary = "Listar todos os advogados", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<List<Advogado>> listarTodos(){
         return ResponseEntity.status(HttpStatus.OK).body(advogadoService.listarTodos());
     }
 
     // Rota para buscar pelo id
     @GetMapping(path = "/advogado/{id}")
+    @Operation(summary = "Buscar advogado pelo id", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Advogado> buscarPeloId(@PathVariable Long id){
         Advogado advogado = advogadoService.buscarPeloId(id);
         if(advogado != null){
@@ -52,6 +57,7 @@ public class AdvogadoController {
     
     // Rota para buscar pelo nome do advogado.
     @GetMapping(path = "/advogado/nome/{nome}")
+    @Operation(summary = "Buscar advogado pelo nome", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Advogado> buscarPeloNome(@PathVariable String nome){
         Advogado advogado = advogadoService.buscarPeloNome(nome);
         if(advogado != null){
@@ -64,6 +70,7 @@ public class AdvogadoController {
 
     // Rota para Deletar
     @DeleteMapping(path = "/advogado/{id}")
+    @Operation(summary = "Deletar advogado pelo id", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<?> deletarPeloId(@PathVariable Long id){
         if(advogadoService.deletarPeloId(id)){
             return ResponseEntity.status(HttpStatus.OK).body("Deletado com sucesso");
@@ -74,6 +81,7 @@ public class AdvogadoController {
 
     // Rota para Atualizar
     @PatchMapping(path = "/advogado/{id}")
+    @Operation(summary = "Atualizar advogado", security = @SecurityRequirement(name = "bearerAuth"))
     public ResponseEntity<Advogado> atualizar(@PathVariable Long id, @RequestBody Advogado advogado){
         Advogado advogadoAtualizado = advogadoService.atualizar(id, advogado);
         if(advogadoAtualizado != null){
