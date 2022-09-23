@@ -1,4 +1,4 @@
-package templates;
+package imd.tst.exercicio.enums;
 
 
 public enum Orgao {

@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.config;
+package imd.tst.exercicio.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.HttpMethod;
@@ -9,9 +9,9 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import imd.tst.exercicio.configs.security.filter.JwtAuthFilter;
-import imd.tst.exercicio.configs.security.services.JwtService;
-import imd.tst.exercicio.configs.security.services.UsuarioServiceImpl;
+import imd.tst.exercicio.security.filter.JwtAuthFilter;
+import imd.tst.exercicio.security.services.JwtService;
+import imd.tst.exercicio.security.services.UsuarioServiceImpl;
 import lombok.AllArgsConstructor;
 
 @EnableWebSecurity

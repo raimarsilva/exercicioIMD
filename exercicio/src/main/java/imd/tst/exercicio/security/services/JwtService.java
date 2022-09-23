@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.services;
+package imd.tst.exercicio.security.services;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -10,7 +10,7 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import imd.tst.exercicio.configs.security.entities.Usuario;
+import imd.tst.exercicio.security.entities.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;

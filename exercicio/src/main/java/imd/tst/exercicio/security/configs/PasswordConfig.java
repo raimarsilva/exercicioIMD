@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.config;
+package imd.tst.exercicio.security.configs;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

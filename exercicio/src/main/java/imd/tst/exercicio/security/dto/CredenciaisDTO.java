@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.dto;
+package imd.tst.exercicio.security.dto;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.services;
+package imd.tst.exercicio.security.services;
 
 
 import javax.transaction.Transactional;
@@ -9,8 +9,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import imd.tst.exercicio.configs.security.entities.Usuario;
-import imd.tst.exercicio.configs.security.repositories.UsuarioRepository;
+import imd.tst.exercicio.security.entities.Usuario;
+import imd.tst.exercicio.security.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
 

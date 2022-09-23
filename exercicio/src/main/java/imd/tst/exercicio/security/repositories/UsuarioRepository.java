@@ -1,10 +1,10 @@
-package imd.tst.exercicio.configs.security.repositories;
+package imd.tst.exercicio.security.repositories;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import imd.tst.exercicio.configs.security.entities.Usuario;
+import imd.tst.exercicio.security.entities.Usuario;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 

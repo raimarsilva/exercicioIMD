@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.exceptions;
+package imd.tst.exercicio.security.exceptions;
 
 public class SenhaInvalidaException extends RuntimeException {
     public SenhaInvalidaException() {

@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.filter;
+package imd.tst.exercicio.security.filter;
 
 import java.io.IOException;
 
@@ -13,8 +13,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import imd.tst.exercicio.configs.security.services.JwtService;
-import imd.tst.exercicio.configs.security.services.UsuarioServiceImpl;
+import imd.tst.exercicio.security.services.JwtService;
+import imd.tst.exercicio.security.services.UsuarioServiceImpl;
 
 public class JwtAuthFilter extends OncePerRequestFilter {
 

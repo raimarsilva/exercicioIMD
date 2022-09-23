@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security.controller;
+package imd.tst.exercicio.security.controller;
 
 import javax.validation.Valid;
 
@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
-import imd.tst.exercicio.configs.security.dto.CredenciaisDTO;
-import imd.tst.exercicio.configs.security.dto.TokenDTO;
-import imd.tst.exercicio.configs.security.entities.Usuario;
-import imd.tst.exercicio.configs.security.exceptions.SenhaInvalidaException;
-import imd.tst.exercicio.configs.security.services.JwtService;
-import imd.tst.exercicio.configs.security.services.UsuarioServiceImpl;
+import imd.tst.exercicio.security.dto.CredenciaisDTO;
+import imd.tst.exercicio.security.dto.TokenDTO;
+import imd.tst.exercicio.security.entities.Usuario;
+import imd.tst.exercicio.security.exceptions.SenhaInvalidaException;
+import imd.tst.exercicio.security.services.JwtService;
+import imd.tst.exercicio.security.services.UsuarioServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 @RestController
