@@ -26,4 +26,9 @@ public class JuizService {
             return null;
         }
     }
+
+    public Juiz atualizar(Long id, Juiz juiz){    	
+    	return (juizRepository.findById(id).isPresent()) 
+    			? juizRepository.save(juiz) : null;
+    }
 }
