@@ -41,9 +41,6 @@ public class Orgao implements Serializable {
     @Column(nullable = false)
 	private String nome;
     
-    @Column(nullable = false) @DateTimeFormat(style = "SS")
-    private Date data;
-    
     @OneToMany(targetEntity = Pauta.class)
     private java.util.Set<Pauta> pautas;
     
