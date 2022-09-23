@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,22 +29,24 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 // Anotações JPA
-@Entity @Table(name = "TB_PAUTA")
-public class Pauta implements Serializable {
+@Entity @Table(name = "TB_ORGAO")
+public class Orgao implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_pauta"/* , insertable = false, updatable = false */)
+	@Column(name = "id_orgao"/* , insertable = false, updatable = false */)
     private Long id;
-    
-    @Column(nullable = false) @DateTimeFormat(style = "SS")
-    private Date data;
-    
-    @OneToMany(targetEntity = Processo.class)
-    private java.util.Set<Processo> processos;
 
-    @ManyToOne(targetEntity = Orgao.class)
-    @JoinColumn(name="id")
-    private Orgao orgao;
+    @Column(nullable = false)
+	private String nome;
+    
+    @OneToMany(targetEntity = Pauta.class)
+    private java.util.Set<Pauta> pautas;
+    
+    @ManyToOne(targetEntity = Juiz.class)
+    private Juiz presidente;
+
+    @ManyToMany(targetEntity = Juiz.class)
+    private java.util.Set<Juiz> composicao;
 }

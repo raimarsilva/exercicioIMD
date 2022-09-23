@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.ManyToMany;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -27,6 +28,7 @@ public class Juiz implements Serializable{
 	@Column(nullable = false)
 	private String nome;
 	
-	// TODO: Vicular com os orgãos que participa
+	@ManyToMany(targetEntity = Juiz.class)
+    private java.util.Set<Juiz> composicao;
 
 }
