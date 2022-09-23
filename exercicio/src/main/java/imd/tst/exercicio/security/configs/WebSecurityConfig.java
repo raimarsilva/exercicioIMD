@@ -12,15 +12,22 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import imd.tst.exercicio.security.filter.JwtAuthFilter;
 import imd.tst.exercicio.security.services.JwtService;
 import imd.tst.exercicio.security.services.UsuarioServiceImpl;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @EnableWebSecurity
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class WebSecurityConfig {
 	
 	private final JwtService jwtService;
 
 	private final UsuarioServiceImpl usuarioService;
+
+    private static final String[] AUTH_WHITE_LIST = {
+            "/v3/api-docs/**",
+            "/swagger-ui/**",
+            "/v2/api-docs/**",
+            "/swagger-resources/**"
+    };
 
 	@Bean
     public OncePerRequestFilter jwtFilter(){
@@ -34,6 +41,8 @@ public class WebSecurityConfig {
             .authorizeHttpRequests((authz) -> {
                 try {
                     authz
+                        .antMatchers(AUTH_WHITE_LIST)
+                            .permitAll()
                         .antMatchers(HttpMethod.POST, "/api/usuarios/**")
                             .permitAll()
                         .anyRequest().authenticated()

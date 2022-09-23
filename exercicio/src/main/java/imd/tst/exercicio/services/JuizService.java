@@ -10,18 +10,20 @@ import imd.tst.exercicio.repository.JuizRepository;
 
 @Service
 public class JuizService {
-	
-	@Autowired
-    JuizRepository juizRepository;
-    
-    public Juiz buscarPeloId(Long id){
-        if(juizRepository.findById(id).isPresent()) {
 
+    @Autowired
+    JuizRepository juizRepository;
+
+    
+    public List<Juiz> listarTodos(){
+        return juizRepository.findAll();
+    }
+    
+    public Juiz buscarPeloId(Long id ){
+        if(juizRepository.findById(id).isPresent()){
             return juizRepository.findById(id).get();
         }else{
             return null;
         }
-
     }
-
 }
