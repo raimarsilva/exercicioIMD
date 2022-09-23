@@ -22,7 +22,7 @@ public class WebSecurityConfig {
 
 	private final UsuarioServiceImpl usuarioService;
 
-    private static final String[] AUTH_WHITE_LIST = {
+    private static final String[] SWAGGER_LIST = {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/v2/api-docs/**",
@@ -41,11 +41,18 @@ public class WebSecurityConfig {
             .authorizeHttpRequests((authz) -> {
                 try {
                     authz
-                        .antMatchers(AUTH_WHITE_LIST)
+                        .antMatchers(SWAGGER_LIST)
                             .permitAll()
                         .antMatchers(HttpMethod.POST, "/api/usuarios/**")
                             .permitAll()
-                        .anyRequest().authenticated()
+                        .antMatchers(HttpMethod.POST)
+                            .hasRole("ADMIN")
+                        .antMatchers(HttpMethod.DELETE)
+                            .hasRole("ADMIN")
+                        .antMatchers(HttpMethod.PATCH)
+                            .hasRole("ADMIN")
+                        .anyRequest()
+                            .authenticated()
                     .and() 
                         .sessionManagement()
                         .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
