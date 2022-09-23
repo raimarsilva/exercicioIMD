@@ -1,4 +1,4 @@
-package imd.tst.exercicio.configs.security;
+package imd.tst.exercicio.configs.security.services;
 
 
 import javax.transaction.Transactional;
@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import imd.tst.exercicio.configs.security.entities.Usuario;
 import imd.tst.exercicio.configs.security.exceptions.SenhaInvalidaException;
-import imd.tst.exercicio.models.Usuario;
-import imd.tst.exercicio.repository.UsuarioRepository;
+import imd.tst.exercicio.configs.security.repositories.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 
 
@@ -36,7 +36,6 @@ public class UsuarioServiceImpl implements UserDetailsService {
         if(senhasBatem){
             return user;
         }
-
         throw new SenhaInvalidaException();
     }
 

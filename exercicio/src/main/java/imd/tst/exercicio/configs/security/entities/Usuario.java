@@ -1,4 +1,4 @@
-package imd.tst.exercicio.models;
+package imd.tst.exercicio.configs.security.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -1,4 +1,4 @@
-package imd.tst.exercicio.controller;
+package imd.tst.exercicio.configs.security.controller;
 
 import javax.validation.Valid;
 
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import imd.tst.exercicio.configs.security.UsuarioServiceImpl;
-import imd.tst.exercicio.models.Usuario;
+import imd.tst.exercicio.configs.security.entities.Usuario;
+import imd.tst.exercicio.configs.security.services.UsuarioServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 @RestController
