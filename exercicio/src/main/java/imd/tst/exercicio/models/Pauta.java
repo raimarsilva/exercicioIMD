@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -16,7 +18,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
-import imd.tst.exercicio.enums.Orgao;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -42,8 +43,8 @@ public class Pauta implements Serializable {
     
     @OneToMany(targetEntity = Processo.class)
     private java.util.Set<Processo> processos;
-    
-    @Column(name="orgao_judicante")
-    private Orgao orgaoJudicante;
 
+    @ManyToOne(targetEntity = Orgao.class)
+    @JoinColumn(name="id")
+    private Orgao orgao;
 }
