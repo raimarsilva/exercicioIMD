@@ -1,8 +1,9 @@
 package imd.tst.exercicio.repository;
 
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-@Repository
-public interface RelatorRepository extends UsuarioRepository{
+import imd.tst.exercicio.models.Relator;
+
+public interface RelatorRepository extends JpaRepository<Relator, Long>{
 
 }
