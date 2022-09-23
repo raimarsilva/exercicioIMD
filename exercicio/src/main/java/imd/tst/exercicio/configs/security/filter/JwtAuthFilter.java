@@ -41,13 +41,12 @@ public class JwtAuthFilter extends OncePerRequestFilter {
             if(isValid){
                 String loginUsuario = jwtService.obterLoginUsuario(token);
                 UserDetails usuario = usuarioService.loadUserByUsername(loginUsuario);
-                //coloca o usuario no contexto do spring security
+                
                 UsernamePasswordAuthenticationToken user = new
-                        UsernamePasswordAuthenticationToken(usuario,null,
-                        usuario.getAuthorities());
-                //autenticação web        
+                        UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
+                        
                 user.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
-                //contexto do spring security
+                
                 SecurityContextHolder.getContext().setAuthentication(user);
             }
         }
