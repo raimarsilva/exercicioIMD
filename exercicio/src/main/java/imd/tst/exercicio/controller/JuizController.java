@@ -7,6 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -26,6 +27,18 @@ public class JuizController {
     @GetMapping(path = "/juizes")
     public ResponseEntity<List<Juiz>> listarTodos(){
         return ResponseEntity.status(HttpStatus.OK).body(juizService.listarTodos());
+    }
+
+    //Rota para buscar pelo id
+    @GetMapping(path = "/juiz/{id}")
+    public ResponseEntity<Juiz> buscarPeloId(@PathVariable Long id){
+        Juiz juiz = juizService.buscarPeloId(id);
+        if(juiz != null){
+            System.out.println(juiz.toString());
+            return ResponseEntity.status(HttpStatus.OK).body(juiz);
+        }else{
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(juiz);
+        }
     }
     
 }
