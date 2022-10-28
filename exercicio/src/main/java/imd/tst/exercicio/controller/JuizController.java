@@ -21,42 +21,42 @@ import imd.tst.exercicio.models.Juiz;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(value="/api")
+@RequestMapping(value = "/api")
 public class JuizController {
 
-    @Autowired
-    JuizService juizService;
+	@Autowired
+	JuizService juizService;
 
-    //Rota para listar todos
-    @GetMapping(path = "/juizes")
-    @Operation(summary = "Listar todos os juizes", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<List<Juiz>> listarTodos(){
-        return ResponseEntity.status(HttpStatus.OK).body(juizService.listarTodos());
-    }
+	// Rota para listar todos os juizes.
+	@GetMapping(path = "/juizes")
+	@Operation(summary = "Listar todos os juizes", security = @SecurityRequirement(name = "bearerAuth"))
+	public ResponseEntity<List<Juiz>> listarTodos() {
+		return ResponseEntity.status(HttpStatus.OK).body(juizService.listarTodos());
+	}
 
-    //Rota para buscar pelo id
-    @GetMapping(path = "/juiz/{id}")
-    @Operation(summary = "Buscar juiz pelo id", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<Juiz> buscarPeloId(@PathVariable Long id){
-        Juiz juiz = juizService.buscarPeloId(id);
-        if(juiz != null){
-            System.out.println(juiz.toString());
-            return ResponseEntity.status(HttpStatus.OK).body(juiz);
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(juiz);
-        }
-    }
+	// Rota para buscar pelo id
+	@GetMapping(path = "/juiz/{id}")
+	@Operation(summary = "Buscar juiz pelo id", security = @SecurityRequirement(name = "bearerAuth"))
+	public ResponseEntity<Juiz> buscarPeloId(@PathVariable Long id) {
+		Juiz juiz = juizService.buscarPeloId(id);
+		if (juiz != null) {
+			System.out.println(juiz.toString());
+			return ResponseEntity.status(HttpStatus.OK).body(juiz);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(juiz);
+		}
+	}
 
-    // Rota para Atualizar
-    @PatchMapping(path = "/juiz/{id}")
-    @Operation(summary = "Atualizar juiz", security = @SecurityRequirement(name = "bearerAuth"))
-    public ResponseEntity<Juiz> atualizar(@PathVariable Long id, @RequestBody Juiz juiz){
-        Juiz juizAtualizado = juizService.atualizar(id, juiz);
-        if(juizAtualizado != null){
-            return ResponseEntity.status(HttpStatus.OK).body(juizAtualizado);
-        }else{
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(juizAtualizado);
-        }
-    }
-    
+	// Rota para Atualizar
+	@PatchMapping(path = "/juiz/{id}")
+	@Operation(summary = "Atualizar juiz", security = @SecurityRequirement(name = "bearerAuth"))
+	public ResponseEntity<Juiz> atualizar(@PathVariable Long id, @RequestBody Juiz juiz) {
+		Juiz juizAtualizado = juizService.atualizar(id, juiz);
+		if (juizAtualizado != null) {
+			return ResponseEntity.status(HttpStatus.OK).body(juizAtualizado);
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body(juizAtualizado);
+		}
+	}
+
 }

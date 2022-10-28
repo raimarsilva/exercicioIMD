@@ -2,10 +2,7 @@ package imd.tst.exercicio.models;
 
 import java.io.Serializable;
 
-<<<<<<< HEAD
 import javax.persistence.Column;
-=======
->>>>>>> ffc153636a6061c6a692abf1dcce009555cd355c
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,10 +14,10 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper=false)
+@EqualsAndHashCode(callSuper = false)
 @Entity
 @Table(name = "tb_juiz")
-public class Juiz implements Serializable{
+public class Juiz implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -30,8 +27,8 @@ public class Juiz implements Serializable{
 
 	@Column(nullable = false)
 	private String nome;
-	
+
 	@ManyToMany(targetEntity = Juiz.class)
-    private java.util.Set<Juiz> composicao;
+	private java.util.Set<Juiz> composicao;
 
 }

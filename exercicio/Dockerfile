@@ -1,4 +1,4 @@
-FROM openjdk:18-alpine
+FROM openjdk:17-alpine
 
 COPY . .
 
@@ -8,4 +8,6 @@ WORKDIR /build/libs
 
 #RUN javac Main.java
 
-CMD ["java", "-Dspring.profiles.active=dev", "-jar", "exercicio-0.0.1-SNAPSHOT.jar"]
+EXPOSE 8080
+
+ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar", "exercicio-0.0.1-SNAPSHOT.jar"]
