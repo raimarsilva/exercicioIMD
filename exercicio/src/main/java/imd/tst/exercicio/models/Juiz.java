@@ -2,7 +2,10 @@ package imd.tst.exercicio.models;
 
 import java.io.Serializable;
 
+<<<<<<< HEAD
 import javax.persistence.Column;
+=======
+>>>>>>> ffc153636a6061c6a692abf1dcce009555cd355c
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;

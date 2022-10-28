@@ -9,7 +9,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/bd_exercicio
       - SPRING_DATASOURCE_USERNAME=postgres
       - SPRING_DATASOURCE_PASSWORD=root
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create-drop
     depends_on:
       - db
   db:
