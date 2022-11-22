@@ -25,33 +25,31 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/usuarios")
 @RequiredArgsConstructor
 public class UsuarioController {
-	
+
 	private final UsuarioServiceImpl usuarioService;
 
 	private final PasswordEncoder passwordEncoder;
-    
-    private final JwtService jwtService;
-	
-	@PostMapping("/criar")
-    @Operation(summary = "Criar um novo usu√°rio") 
-    @ResponseStatus(HttpStatus.CREATED)
-    public Usuario salvar( @RequestBody @Valid Usuario usuario){
-        String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
-        usuario.setSenha(senhaCriptografada);
-        return usuarioService.salvar(usuario);
-    }
 
-    @PostMapping("/auth")
-    @Operation(summary = "Obter o token com login e senha") 
-    public TokenDTO autenticar(@RequestBody CredenciaisDTO credenciais){
-        try{
-            Usuario usuario = Usuario.builder()
-                    .login(credenciais.getLogin())
-                    .senha(credenciais.getSenha()).build();
-            String token = jwtService.gerarToken(usuario);
-            return new TokenDTO(usuario.getLogin(), token);
-        } catch (UsernameNotFoundException | SenhaInvalidaException e ){
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
-        }
-    }
+	private final JwtService jwtService;
+
+	@PostMapping("/criar")
+	@Operation(summary = "Criar um novo usu·rio")
+	@ResponseStatus(HttpStatus.CREATED)
+	public Usuario salvar(@RequestBody @Valid Usuario usuario) {
+		String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+		usuario.setSenha(senhaCriptografada);
+		return usuarioService.salvar(usuario);
+	}
+
+	@PostMapping("/auth")
+	@Operation(summary = "Obter o token com login e senha")
+	public TokenDTO autenticar(@RequestBody CredenciaisDTO credenciais) {
+		try {
+			Usuario usuario = Usuario.builder().login(credenciais.getLogin()).senha(credenciais.getSenha()).build();
+			String token = jwtService.gerarToken(usuario);
+			return new TokenDTO(usuario.getLogin(), token);
+		} catch (UsernameNotFoundException | SenhaInvalidaException e) {
+			throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, e.getMessage());
+		}
+	}
 }
