@@ -1,13 +1,10 @@
+FROM gradle:7.5.1-jdk17-alpine as builder
+WORKDIR /usr/app
+COPY . ./
+RUN gradle build -x test
+
 FROM openjdk:17-alpine
-
-COPY . .
-
-RUN chmod +x /build/libs/exercicio-0.0.1-SNAPSHOT.jar
-
-WORKDIR /build/libs
-
-#RUN javac Main.java
-
+WORKDIR /usr/app
+COPY --from=builder /usr/app/build/libs/*jar ./app.jar
 EXPOSE 8080
-
-ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar", "exercicio-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java", "-Dspring.profiles.active=dev", "-jar", "app.jar"]
