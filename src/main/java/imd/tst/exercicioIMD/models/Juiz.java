@@ -23,12 +23,13 @@ public class Juiz implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long idAdvogado;
+	@Column(name = "id_juiz")
+	private Long idJuiz;
 
 	@Column(nullable = false)
 	private String nome;
 
-	@ManyToMany(targetEntity = Juiz.class)
-	private java.util.Set<Juiz> composicao;
+	@ManyToMany(mappedBy = "composicao")
+	private java.util.Set<Orgao> orgaosQueCompoe;
 
 }

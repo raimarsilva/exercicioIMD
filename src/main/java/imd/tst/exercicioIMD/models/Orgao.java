@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -44,6 +46,10 @@ public class Orgao implements Serializable {
     @ManyToOne(targetEntity = Juiz.class)
     private Juiz presidente;
 
-    @ManyToMany(targetEntity = Juiz.class)
+    @ManyToMany
+    @JoinTable(
+        name= "tb_orgaos_juizes", 
+        joinColumns= @JoinColumn(name="id_orgao"),
+        inverseJoinColumns= @JoinColumn(name="id_juiz"))
     private java.util.Set<Juiz> composicao;
 }
