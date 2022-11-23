@@ -11,12 +11,15 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder //@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@Builder
 // Anotações lombok
 @AllArgsConstructor
 @NoArgsConstructor
@@ -38,10 +41,13 @@ public class Processo implements Serializable {
 	//Confirmar se essa propriedade é necessária no processo ou se pode ser recuperada da pauta.
     //private String orgaoJudic;
 	
-    private String relator;
+    @ManyToOne(targetEntity = Juiz.class)
+    @JsonManagedReference
+    private Juiz relator;
     
     @ManyToOne(targetEntity = Pauta.class)
     @JoinColumn(name="id")
+    @JsonBackReference
     private Pauta pauta;
     
     @Column

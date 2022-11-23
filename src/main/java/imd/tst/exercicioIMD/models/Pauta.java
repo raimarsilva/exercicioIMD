@@ -15,15 +15,15 @@ import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@Builder
 // Anotações lombok
 @AllArgsConstructor
 @NoArgsConstructor
@@ -42,9 +42,11 @@ public class Pauta implements Serializable {
     private Date data;
     
     @OneToMany(targetEntity = Processo.class)
+    @JsonManagedReference
     private java.util.Set<Processo> processos;
 
     @ManyToOne(targetEntity = Orgao.class)
     @JoinColumn(name="id")
+    @JsonBackReference
     private Orgao orgao;
 }

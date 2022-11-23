@@ -14,15 +14,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Builder @JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="id")
+@Builder
 // Anotações lombok
 @AllArgsConstructor
 @NoArgsConstructor
@@ -41,9 +40,11 @@ public class Orgao implements Serializable {
 	private String nome;
     
     @OneToMany(targetEntity = Pauta.class)
+    @JsonManagedReference
     private java.util.Set<Pauta> pautas;
     
     @ManyToOne(targetEntity = Juiz.class)
+    @JsonManagedReference
     private Juiz presidente;
 
     @ManyToMany
@@ -51,5 +52,6 @@ public class Orgao implements Serializable {
         name= "tb_orgaos_juizes", 
         joinColumns= @JoinColumn(name="id_orgao"),
         inverseJoinColumns= @JoinColumn(name="id_juiz"))
+    @JsonManagedReference
     private java.util.Set<Juiz> composicao;
 }

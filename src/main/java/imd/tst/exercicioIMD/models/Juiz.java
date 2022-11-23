@@ -8,6 +8,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.ManyToMany;
 
 import lombok.Data;
@@ -30,6 +33,7 @@ public class Juiz implements Serializable {
 	private String nome;
 
 	@ManyToMany(mappedBy = "composicao")
+	@JsonBackReference
 	private java.util.Set<Orgao> orgaosQueCompoe;
 
 }
