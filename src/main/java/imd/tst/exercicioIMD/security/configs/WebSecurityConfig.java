@@ -17,53 +17,34 @@ import lombok.RequiredArgsConstructor;
 @EnableWebSecurity
 @RequiredArgsConstructor
 public class WebSecurityConfig {
-	
+
 	private final JwtService jwtService;
 
 	private final UsuarioServiceImpl usuarioService;
 
-    private static final String[] SWAGGER_LIST = {
-            "/v3/api-docs/**",
-            "/swagger-ui/**",
-            "/v2/api-docs/**",
-            "/swagger-resources/**"
-    };
+	private static final String[] SWAGGER_LIST = { "/v3/api-docs/**", "/swagger-ui/**", "/v2/api-docs/**",
+			"/swagger-resources/**" };
 
 	@Bean
-    public OncePerRequestFilter jwtFilter(){
-        return new JwtAuthFilter(jwtService, usuarioService);
-    }
+	public OncePerRequestFilter jwtFilter() {
+		return new JwtAuthFilter(jwtService, usuarioService);
+	}
 
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http
-            .csrf().disable()
-            .authorizeHttpRequests((authz) -> {
-                try {
-                    authz
-                        .antMatchers(SWAGGER_LIST)
-                            .permitAll()
-                        .antMatchers(HttpMethod.POST, "/api/usuarios/**")
-                            .permitAll()
-                        .antMatchers(HttpMethod.POST)
-                            .hasRole("ADMIN")
-                        .antMatchers(HttpMethod.DELETE)
-                            .hasRole("ADMIN")
-                        .antMatchers(HttpMethod.PATCH)
-                            .hasRole("ADMIN")
-                        .anyRequest()
-                            .authenticated()
-                    .and() 
-                        .sessionManagement()
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                    .and()
-                        .addFilterBefore( jwtFilter(), UsernamePasswordAuthenticationFilter.class);
-                } catch (Exception e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
-            });
+		http.csrf().disable().authorizeHttpRequests((authz) -> {
+			try {
+				authz.antMatchers(SWAGGER_LIST).permitAll().antMatchers(HttpMethod.POST, "/api/usuarios/**").permitAll()
+						.antMatchers(HttpMethod.POST).hasRole("ADMIN").antMatchers(HttpMethod.DELETE).hasRole("ADMIN")
+						.antMatchers(HttpMethod.PATCH).hasRole("ADMIN").anyRequest().authenticated().and()
+						.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
+						.addFilterBefore(jwtFilter(), UsernamePasswordAuthenticationFilter.class);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		});
 
-        return http.build();
+		return http.build();
 	}
 }
